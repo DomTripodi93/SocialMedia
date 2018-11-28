@@ -1,0 +1,53 @@
+{% extends "layout/Layout.html" %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+
+{% load crispy_forms_tags %}
+
+{% block content %}
+
+{% if error_message %}
+    <p>{{ error_message }}</p>
+{% endif %}
+
+{% if user.is_authenticated %}
+
+<div class="container center-align">
+<h3 class="center-align red lighten-3">Are you sure you want to DELETE this post?</h3>
+</head>
+<body>
+    <div class="container center-align"> 
+    <form action = "" method="POST">
+        {% csrf_token %}
+
+        {{ form|crispy }}
+
+        <button class="btn red" type="submit">Delete</button>
+
+        {% if form.errors %}
+        <p> Please choose a valid post to delete</p>
+        {% endif %}
+    </form>
+    <br><br>
+    </div>
+</body>
+</div>
+
+{% else %}
+
+Please <a href="/accounts/login">sign in</a> to delete your post
+
+{% endif %}
+<div class="container center-align">
+<input type=button class="btn" value="Go Back" onClick="javascript:history.go(-1);">
+<a 
+    type=button
+    class="btn btn-lg" 
+    href="/posts/create">
+    Create a new post
+</a>
+</div>
+{% endblock %}

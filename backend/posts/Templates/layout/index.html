@@ -1,0 +1,22 @@
+{% extends 'layout/Layout.html' %}
+{% block content %}
+<link href="https://fonts.googleapis.com/css?family=Lobster" rel="stylesheet" type="text/css">
+
+
+<main>
+
+
+  <ul class="collection">
+    {% for posts in posts %}
+      <li class="collection-item">
+        <a href="/posts/details/{{posts.id}}">{{posts.title}}</a>
+      </li>
+    {% endfor %}
+  </ul>
+
+
+</main>
+
+
+
+{% endblock %}

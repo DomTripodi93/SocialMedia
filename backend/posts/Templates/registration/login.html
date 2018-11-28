@@ -1,0 +1,29 @@
+{% extends 'layout/Layout.html' %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+{% load crispy_forms_tags %}
+{% block content %}
+
+<div class="container">
+<div class="col-sm-8 col-sm-offset-2">
+<h1>Sign In</h1>
+</head>
+<body>
+<p>If you have not created an account yet, then please
+<a href="/accounts/register">sign up</a> first.</p>
+<br>
+
+    <form method="POST" action="{% url 'login' %}">
+  {% csrf_token %}
+  {{ form|crispy }}
+
+ <!-- <a class="button secondaryAction" href="">Forgot Password?</a> -->
+  <button class="primaryAction" type="submit" value="login">Sign In</button>
+</form>
+</body>
+</div>
+</div>
+</html>
+{% endblock %}

@@ -1,0 +1,57 @@
+{% extends 'layout/Layout.html' %}
+{% block content %}
+
+<h2 class="center-align red lighten-3">
+    Welcome {{user}}!
+</h2>
+
+<div class="card">
+    <div class="card-content">
+        <h5>Bio:</h5>
+        <br>
+        {{user.propage.bio}}
+    </div>
+</div>
+
+<div class="card">
+    <div class="card-content">
+        <h5>Interests:</h5>
+        {{user.propage.interests}}
+    </div>
+</div>
+
+<div class="card">
+    <div class="card-content">
+        <h5>Goals:</h5>
+        {{user.propage.goals}}
+    </div>
+</div>
+<a 
+    type=button
+    class="btn btn-lg" 
+    href="/accounts/profile/{{request.user.id}}/update">
+    Update Your Profile
+</a>
+<br>
+<div class="card">
+    <div class="card-content">
+        <h5>My Posts</h5>
+        <h6>Create a <a href="/posts/create">new post</a></h6>
+        <ul class="collection">
+            {% for posts in posts %}
+            <li class="collection-item">
+                <a href="/posts/details/{{posts.id}}">
+                    {{posts.title}}
+                </a>
+            </li>
+            {% endfor %}
+        </ul>
+    </div>
+</div>
+
+<input 
+    type=button 
+    class="btn" 
+    value="Go Back" 
+    onClick="javascript:history.go(-1);">
+{% endblock %}

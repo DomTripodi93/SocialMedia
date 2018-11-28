@@ -1,0 +1,63 @@
+{% extends 'layout/Layout.html' %}
+{% block content %}
+
+
+{% ifequal post.user request.user %}
+<h3 class="center-align red lighten-3">{{post.title}}</h3>
+
+<div class="card">
+    <div class="card-content">
+        {{post.body}}
+    </div>
+    <div class="card-action">
+        Created on: {{post.created_at}}
+        <br>
+        By: {{post.user.username}}
+    </div>
+</div>
+<input type=button class="btn" value="Go Back" onClick="javascript:history.go(-1);">
+<a 
+    type=button
+    class="btn btn-lg" 
+    href="/posts/details/{{post.id}}/update">
+    Update {{posts.title}}
+</a>
+<a 
+    type=button
+    class="btn btn-lg" 
+    href="/posts/create">
+    Create a new post
+</a>
+<a 
+    type=button
+    class="btn btn-lg" 
+    href="/posts/details/{{post.id}}/delete">
+    Delete {{posts.title}}
+</a>
+
+{% else %}
+
+<h3 class="center-align red lighten-3">{{post.title}}</h3>
+
+<div class="card">
+    <div class="card-content">
+        {{post.body}}
+    </div>
+    <div class="card-action">
+        Created on: {{post.created_at}}
+        <br>
+        By: {{post.user.username}}
+    </div>
+</div>
+<input type=button class="btn" value="Go Back" onClick="javascript:history.go(-1);">
+
+<a 
+    type=button
+    class="btn btn-lg" 
+    href="/posts/create">
+    Create a new post
+</a>
+
+{% endifequal %}
+
+{% endblock %}
