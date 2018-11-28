@@ -1,4 +1,12 @@
 from django.contrib import admin
-from .models import Propage
+from . import models
+from django.contrib.auth.backends import ModelBackend
 
-admin.site.register(Propage)
+
+Models = (
+    models.Posts, 
+    models.ProUser,
+    models.Propage,
+    )
+
+admin.site.register(Models)

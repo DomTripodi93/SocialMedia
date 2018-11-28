@@ -2,16 +2,13 @@ import os
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
-SECRET_KEY = '123512515thisisafakesecretkey3412616'
+SECRET_KEY = '4hzbthisisafakesecretkeyhpv@adai'
 
 DEBUG = True
 
 ALLOWED_HOSTS = []
 
-LOGOUT_URL = '/'
-
 INSTALLED_APPS = [
-    'posts',
     'propage',
     'django.contrib.admin',
     'django.contrib.auth',
@@ -19,11 +16,10 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'crispy_forms',
     'rest_framework',
+    'rest_framework.authtoken',
+    'crispy_forms'
 ]
-
-CRISPY_TEMPLATE_PACK = 'bootstrap3'
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -40,7 +36,7 @@ ROOT_URLCONF = 'backend.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': ['./propage/Templates'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -59,7 +55,7 @@ WSGI_APPLICATION = 'backend.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'social1',
+        'NAME': 'social2',
         'USER': 'root',
         'PASSWORD': '',
         'HOST': 'localhost',
@@ -82,6 +78,7 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
+LOGOUT_URL = '/'
 
 LANGUAGE_CODE = 'en-us'
 
@@ -93,9 +90,7 @@ USE_L10N = True
 
 USE_TZ = True
 
-
 STATIC_URL = '/static/'
 
-MEDIA_URL = '/media/'
+AUTH_USER_MODEL = 'propage.ProUser'
 
-MEDIA_ROOT = os.path.join(BASE_DIR, 'backend/media')
