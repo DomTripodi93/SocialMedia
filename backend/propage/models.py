@@ -1,9 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import AbstractBaseUser, PermissionsMixin, BaseUserManager
 
-
-
-
 class ProUserManager(BaseUserManager):
     def create_user(self, email, name, password=None):
         if not email:
@@ -67,5 +64,7 @@ class Posts(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
     def __str__(self):
         return self.title
+    def get_user(self):
+        return self.user
     class Meta:
         verbose_name_plural = "Posts"

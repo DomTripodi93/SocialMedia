@@ -7,7 +7,7 @@ Individually input the following lines into your SQL shell as a single line comm
 
 DROP TABLE propage_propage;
 
-create table propage_propage(
+CREATE TABLE propage_propage(
 	user_id VARCHAR(100) PRIMARY KEY REFERENCES propage_prouser.id,
     bio VARCHAR(1000) DEFAULT 'Tell us a little bit about yourself!',
     interests VARCHAR(300) DEFAULT 'What are some of your interests?',
@@ -17,10 +17,10 @@ create table propage_propage(
 DELIMITER $$
 
 CREATE 
-	TRIGGER Propage_trigger1 AFTER INSERT
-    ON propage_prouser
-    FOR EACH ROW BEGIN
-	INSERT INTO propage_propage VALUES(NEW.id, DEFAULT, DEFAULT, DEFAULT);
-	END$$
+    TRIGGER Propage_trigger1 AFTER INSERT 
+    ON propage_prouser 
+    FOR EACH ROW BEGIN 
+	INSERT INTO propage_propage VALUES(NEW.id, DEFAULT, DEFAULT, DEFAULT); 
+	END$$ 
 
 DELIMITER ;

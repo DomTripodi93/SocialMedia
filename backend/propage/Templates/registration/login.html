@@ -8,8 +8,13 @@
 
 <div class="container">
 <div class="col-sm-8 col-sm-offset-2">
-<h1>Sign In</h1>
+<u><h1>Sign In</h1></u>
 </head>
+{% if user.is_authenticated %}
+<body>
+<h3> You are already signed in! you can go to your propage <a href='/accounts/profile'>here</a>.</h3> 
+</body>
+{% else %}
 <body>
 <p>If you have not created an account yet, then please
 <a href="/accounts/register">sign up</a> first.</p>
@@ -23,6 +28,7 @@
   <button class="primaryAction" type="submit" value="login">Sign In</button>
 </form>
 </body>
+{% endif %}
 </div>
 </div>
 </html>

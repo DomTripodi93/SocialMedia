@@ -13,7 +13,7 @@
     <p>{{ error_message }}</p>
 {% endif %}
 
-{% if user.is_authenticated %}
+{% ifequal post.user request.user %}
 
 <div class="container center-align">
 <h3 class="center-align red lighten-3">Are you sure you want to DELETE this post?</h3>
@@ -35,12 +35,11 @@
     </div>
 </body>
 </div>
-
 {% else %}
-
-Please <a href="/accounts/login">sign in</a> to delete your post
-
-{% endif %}
+<div class="container center-align">
+<h3 class="center-align red lighten-3">You can only delete your own posts.</h3>
+</div>
+{% endifequal %}
 <div class="container center-align">
 <input type=button class="btn" value="Go Back" onClick="javascript:history.go(-1);">
 <a 

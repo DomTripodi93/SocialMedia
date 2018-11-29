@@ -1,22 +1,11 @@
 from . import views
 
-from rest_framework import routers
-
 from django.urls import path, include
 from django.conf import settings
-from django.conf.urls.static import static
 from django.contrib.auth import login, logout
 
 
-router = routers.DefaultRouter()
-router.register('profile', views.ProUserViewSet)
-router.register('login', views.LoginViewSet, base_name='login')
-router.register('propage', views.PropageViewSet)
-router.register('posts', views.PostsViewSet)
-
 urlpatterns = [
-    path('api/', include(router.urls)),
-    path('api/api-auth/', include('rest_framework.urls', namespace='pro_api')),
     path('', views.index, name='index'),
     path('home/', views.index, name='index'),
     path('accounts/profile/', views.profile, name= 'propage'),
@@ -30,11 +19,3 @@ urlpatterns = [
     path('accounts/', include('django.contrib.auth.urls'))
 ] 
 
-
-
-"""
-    path('accounts/login/', views.login_view),
-def login_view(request):
-    login(request)
-    return render(request, 'registration/login.html', context) 
-"""

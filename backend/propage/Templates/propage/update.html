@@ -14,13 +14,14 @@
 {% endif %}
 
 
-{% if user.is_authenticated %}
+
 <div class="container">
 <div class="col-sm-8 col-sm-offset-2">
+{% ifequal propage.user request.user %} 
 <h1>Update your profile</h1>
 </head>
 <body>
-   
+ 
     <form action = "" method="POST">
         {% csrf_token %}
 
@@ -33,16 +34,16 @@
         {% endif %}
     </form>
 
+
+{% else %}
+</head>
+<body>
+    <h3>You can only update your own propage</h3>
+{% endifequal %}
 </body>
 </div>
 </div>
-{% else %}
-
-Please <a href="/accounts/login">sign in</a> to create a new post
-
-{% endif %}
 
 
 
-</html>
 {% endblock %}
