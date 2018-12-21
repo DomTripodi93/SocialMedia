@@ -2,7 +2,7 @@ import os
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
-SECRET_KEY = '4hzbTHISISAFAKEKEYadai'
+SECRET_KEY = '4hzb_erojseopdfh[j[234hpv@adai'
 
 DEBUG = True
 

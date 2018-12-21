@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import AbstractBaseUser, PermissionsMixin, BaseUserManager
+from django.db.models.signals import post_save
 
 class ProUserManager(BaseUserManager):
     def create_user(self, email, name, password=None):
@@ -52,8 +53,15 @@ class Propage(models.Model):
 
     def __str__(self):
         return self.user
+
+    def create_profile(sender, **kwargs):
+        if kwargs['created']:
+            propage = Propage.objects.create(user=kwargs['instance'])
+
     class Meta:
         verbose_name_plural = "Profile Pages"
+
+    post_save.connect(create_profile, sender=ProUser)
 
 class Posts(models.Model):
     user = models.ForeignKey(ProUser,

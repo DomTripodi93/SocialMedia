@@ -110,5 +110,4 @@ def profile(request):
         'user': request.user,
         'posts': posts
     }
-
     return render(request, 'propage/profile.html', context)
